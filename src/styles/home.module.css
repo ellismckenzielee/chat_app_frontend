@@ -1,0 +1,29 @@
+.home {
+  color: red;
+}
+
+.welcome {
+  color: blue;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+.input {
+  width: 100%;
+  padding: 0.5em;
+  margin: 0.2em;
+}
+
+.submit {
+  width: 80%;
+  margin: auto;
+  padding: 0.5em;
+  max-width: 360px;
+}
