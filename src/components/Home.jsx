@@ -1,10 +1,19 @@
 import styles from "../styles/home.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { io } from "socket.io-client";
+import axios from "axios";
 const Home = () => {
   const [username, setUsername] = useState("");
+  useEffect(() => {
+    const socket = io("http://localhost:4500", { transports: ["websocket"] });
+    socket.on("message", () => {
+      console.log("MESSAGE!!!");
+    });
+    axios.get("http://localhost:4500/users").then(console.log);
+  }, []);
   return (
     <div className={styles.home}>
-      <h3 classname={styles.welcome}>welcome to</h3>
+      <h3 className={styles.welcome}>welcome to</h3>
       <h1>jibber-jabber</h1>
       <main>
         <form
