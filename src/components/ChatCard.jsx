@@ -1,11 +1,13 @@
 import styles from "../styles/chatCard.module.css";
-import { Link } from "react-router-dom";
-const ChatCard = ({ props }) => {
+const ChatCard = ({ setChatId, chat }) => {
   return (
-    <div className={styles.chatCard}>
-      <Link className={styles.chatCardButton} to={`/messenger/${props._id}`}>
-        {props.users}
-      </Link>
+    <div
+      onClick={() => {
+        setChatId(chat._id);
+      }}
+      className={styles.chatCard}
+    >
+      <h4>{chat.users}</h4>
     </div>
   );
 };
