@@ -7,4 +7,10 @@ const getChatsByUsername = async (username) => {
   return response.data.chats;
 };
 
-export { getChatsByUsername };
+const getMessages = async (username, chatId) => {
+  const response = await backendAPI.get(`${username}/chats/${chatId}`);
+  console.log(response);
+  return response.data.messages;
+};
+
+export { getChatsByUsername, getMessages };
