@@ -3,21 +3,17 @@ import { getMessages } from "../utils/utils";
 import styles from "../styles/chat.module.css";
 import MessageCard from "./MessageCard";
 import { io } from "socket.io-client";
+import { useContext } from "react";
+import { SocketContext } from "../contexts/socket.context";
 const Chat = ({ chatId }) => {
   const [messages, setMessages] = useState([]);
+  const { socket, sendMessage, joinRoom } = useContext(SocketContext);
+  console.log(socket);
   useEffect(() => {
-    console.log("use effect");
     if (chatId !== "") {
       getMessages("ellislee", chatId).then((messages) => {
         setMessages(messages);
-        const socket = io("http://localhost:4500", { transports: ["websocket"] });
-        socket.emit("join", chatId);
-        socket.on("message", (msg) => {
-          console.log("MESSAGE!!!", msg);
-        });
-        socket.on("joined", (chatId) => {
-          console.log("RETURNED CHAT ID", chatId);
-        });
+        joinRoom(chatId);
       });
     }
   }, [chatId]);
@@ -27,6 +23,13 @@ const Chat = ({ chatId }) => {
       {messages.map((message) => {
         return <MessageCard key={message._id} message={message} />;
       })}
+      <button
+        onClick={() => {
+          sendMessage("hello!");
+        }}
+      >
+        Send Message
+      </button>
     </div>
   );
 };
