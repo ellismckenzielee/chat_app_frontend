@@ -1,4 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
 .main {
+  margin: auto;
+  padding: 1em;
+  font-family: "Ubuntu Mono", monospace;
+}
+
+.main h2 {
+  font-size: 3em;
+  color: #191923;
+  text-shadow: -0.05em 0.05em 0 #bf1363, -0.1em 0.1em 0.005em #0e79b2;
+}
+
+main {
   display: grid;
   grid-template-columns: 1fr 2fr;
   margin: auto;
