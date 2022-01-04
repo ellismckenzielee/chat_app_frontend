@@ -9,6 +9,7 @@ const Chat = ({ chatId }) => {
   const [messages, setMessages] = useState([]);
   const { socket, sendMessage, joinRoom } = useContext(SocketContext);
   console.log(socket);
+  const [newMessage, setNewMessage] = useState("");
   useEffect(() => {
     if (chatId !== "") {
       getMessages("ellislee", chatId).then((messages) => {
@@ -17,19 +18,28 @@ const Chat = ({ chatId }) => {
       });
     }
   }, [chatId]);
+  if (chatId === "") return <p>Choose a chat</p>;
   return (
     <div className={styles.chat}>
       <p>This is the chatpage</p>
       {messages.map((message) => {
         return <MessageCard key={message._id} message={message} />;
       })}
-      <button
-        onClick={() => {
-          sendMessage("hello!");
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          sendMessage({ message: newMessage, username: "ellislee", chatId });
         }}
       >
-        Send Message
-      </button>
+        <input
+          type="text"
+          value={newMessage}
+          onChange={(e) => {
+            setNewMessage(e.target.value);
+          }}
+        />
+        <button>Send</button>
+      </form>
     </div>
   );
 };
