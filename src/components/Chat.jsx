@@ -13,11 +13,12 @@ const Chat = ({ chatId }) => {
   console.log("USER", user);
   console.log(socket);
   const [newMessage, setNewMessage] = useState("");
+  console.log(messages);
   useEffect(() => {
     if (chatId !== "") {
       getMessages("ellislee", chatId).then((messages) => {
         setMessages(messages);
-        joinRoom(chatId);
+        joinRoom(chatId, setMessages);
       });
     }
   }, [chatId]);
@@ -31,7 +32,7 @@ const Chat = ({ chatId }) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          sendMessage({ message: newMessage, username: "ellislee", chatId }).then(() => {
+          sendMessage({ message: newMessage, sender: user.username, chatId }).then(() => {
             setNewMessage("");
           });
         }}
