@@ -5,9 +5,12 @@ import MessageCard from "./MessageCard";
 import { io } from "socket.io-client";
 import { useContext } from "react";
 import { SocketContext } from "../contexts/socket.context";
+import { UserContext } from "../contexts/user.context";
 const Chat = ({ chatId }) => {
   const [messages, setMessages] = useState([]);
   const { socket, sendMessage, joinRoom } = useContext(SocketContext);
+  const { user, setUser } = useContext(UserContext);
+  console.log("USER", user);
   console.log(socket);
   const [newMessage, setNewMessage] = useState("");
   useEffect(() => {
@@ -28,7 +31,9 @@ const Chat = ({ chatId }) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          sendMessage({ message: newMessage, username: "ellislee", chatId });
+          sendMessage({ message: newMessage, username: "ellislee", chatId }).then(() => {
+            setNewMessage("");
+          });
         }}
       >
         <input
