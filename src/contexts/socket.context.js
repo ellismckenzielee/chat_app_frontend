@@ -12,10 +12,21 @@ const SocketProvider = (props) => {
   };
   const moveRoom = async () => {
     socket.emit("moveroom");
+    socket.removeAllListeners("message");
   };
-  const joinRoom = async (chatId) => {
+  const joinRoom = async (chatId, func) => {
     console.log("join room");
     socket.emit("join", chatId);
+    socket.on("message", (message) => {
+      console.log("in on message function");
+      func((prevMessages) => {
+        const updatedMessages = [];
+        prevMessages.forEach((prevMessage) => {
+          updatedMessages.push({ ...prevMessage });
+        });
+        return [...updatedMessages, message];
+      });
+    });
   };
   return <SocketContext.Provider value={{ joinRoom, socket, sendMessage, moveRoom }}>{props.children}</SocketContext.Provider>;
 };
