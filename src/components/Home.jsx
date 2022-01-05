@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div className={styles.home}>
       <h3 className={styles.welcome}>welcome to</h3>
-      <h1>jibber-jabber</h1>
+      <h1>Link</h1>
       <main>
         <form
           onSubmit={(e) => {

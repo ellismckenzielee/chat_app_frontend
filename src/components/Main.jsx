@@ -9,7 +9,7 @@ const Main = () => {
 
   return (
     <div className={styles.main}>
-      <h2> jibber jabber </h2>
+      <h2> Link </h2>
       <main>
         <SocketProvider>
           <ChatList setChatID={setChatID} chatId={chatId}></ChatList>
