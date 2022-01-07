@@ -12,7 +12,7 @@ const ChatList = ({ setChatID, chatId }) => {
   }, []);
   return (
     <div className={styles.chatList}>
-      <p>Chats sidebar</p>
+      <p className={styles.chatHeader}>LINK</p>
       {chats.map((chat) => {
         return <ChatCard key={chat._id} chat={chat} chatId={chatId} setChatId={setChatID} />;
       })}
