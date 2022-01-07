@@ -9,13 +9,10 @@ const Main = () => {
 
   return (
     <div className={styles.main}>
-      <h2> Link </h2>
-      <main>
-        <SocketProvider>
-          <ChatList setChatID={setChatID} chatId={chatId}></ChatList>
-          <Chat chatId={chatId}></Chat>
-        </SocketProvider>
-      </main>
+      <SocketProvider>
+        <ChatList setChatID={setChatID} chatId={chatId}></ChatList>
+        <Chat chatId={chatId}></Chat>
+      </SocketProvider>
     </div>
   );
 };
