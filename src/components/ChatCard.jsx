@@ -11,7 +11,7 @@ const ChatCard = ({ setChatId, chat, chatId }) => {
       }}
       className={styles.chatCard}
     >
-      <h4>{chat.users}</h4>
+      <h4 className={styles.chatName}>{chat.users}</h4>
     </div>
   );
 };

@@ -1,17 +1,22 @@
 .chatCard {
-  border: 1px solid black;
-  border-radius: 0.5em;
+  border: 1px solid white;
   width: 100%;
-  margin: 0.2em auto;
-  padding: 0.8em;
-  background-color: #0e79b2;
+  padding: 0px;
+  background-color: #f6f8ff;
+  font-weight: 900;
+  color: #2a9d8f;
 }
 
 .chatCard:hover {
-  background-color: #bf1363;
+  color: #ba324f;
+  cursor: pointer;
 }
 
 .chatCardButton {
-  color: #fbfef9;
+  color: #f6f8ff;
   text-decoration: none;
+}
+
+.chatName {
+  font-weight: 900;
 }
