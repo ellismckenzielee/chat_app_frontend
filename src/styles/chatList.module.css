@@ -5,3 +5,17 @@
   color: #175676;
   font-weight: 900;
 }
+
+.newChatButton {
+  padding: 1em 3em;
+  margin-top: 20px;
+  background-color: #175676;
+  color: ghostwhite;
+  border: 1px solid #175676;
+  border-radius: 5px;
+}
+
+.newChatButton:hover {
+  border: 1px solid white;
+  cursor: pointer;
+}
