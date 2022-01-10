@@ -1,0 +1,29 @@
+.messageContent {
+  max-width: 80%;
+  background-color: white;
+  white-space: collapse;
+  border-radius: 5px;
+  padding: 0.2em;
+}
+
+.userMessage,
+.otherMessage {
+  padding: 0px 10px;
+}
+.userMessage {
+  text-align: right;
+}
+
+.otherMessage {
+  text-align: left;
+}
+
+.author {
+  font-weight: normal;
+  background-color: #ba324f;
+  border: 1px solid #ba324f;
+  border-radius: 5px;
+  font-size: x-small;
+  color: ghostwhite;
+  padding: 0.2em;
+}
