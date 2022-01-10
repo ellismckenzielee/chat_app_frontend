@@ -7,6 +7,14 @@
   color: #2a9d8f;
 }
 
+.activeChatCard {
+  border: 1px solid white;
+  width: 100%;
+  padding: 0px;
+  background-color: #f6f8ff;
+  font-weight: 900;
+  color: black;
+}
 .chatCard:hover {
   color: #ba324f;
   cursor: pointer;
