@@ -20,8 +20,12 @@ const createChat = async (username, recipientUsername) => {
     console.log(response);
     return response;
   } catch (err) {
-    console.dir(err);
-    return Promise.reject(err);
+    const messageFormatter = {
+      "chat already exists": "This chat already exists, please choose a different user.",
+    };
+    console.dir("ERR", err);
+    const msg = messageFormatter[err.response.data.msg];
+    return Promise.reject(msg);
   }
 };
 
