@@ -30,6 +30,7 @@ const Chat = ({ chatId }) => {
         return <MessageCard key={message._id} message={message} />;
       })}
       <form
+        className={styles.form}
         onSubmit={(e) => {
           e.preventDefault();
           sendMessage({ message: newMessage, sender: user.username, chatId }).then(() => {
@@ -37,14 +38,15 @@ const Chat = ({ chatId }) => {
           });
         }}
       >
-        <input
+        <textarea
           type="text"
           value={newMessage}
           onChange={(e) => {
             setNewMessage(e.target.value);
           }}
+          className={styles.formInput}
         />
-        <button>Send</button>
+        <button className={styles.formSubmit}>Send </button>
       </form>
     </div>
   );

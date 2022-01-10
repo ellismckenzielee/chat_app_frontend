@@ -1,3 +1,32 @@
 .chat {
   border: 1px solid black;
+  position: relative;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.formSubmit {
+  flex: 1 0 10%;
+  padding: 0.5em;
+  background-color: #2a9d8f;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  max-width: 80%;
+}
+
+.formInput {
+  width: 80%;
+  max-width: 80%;
 }
