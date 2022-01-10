@@ -1,0 +1,39 @@
+.createUser {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.formContainer {
+  width: 50%;
+  min-width: 350px;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.form * {
+  padding: 1em;
+  margin: 0.2em;
+}
+
+.createUserButton {
+  background-color: #175676;
+  color: ghostwhite;
+  border: 1px solid #175676;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.createUserButton:hover {
+  border: 1px solid ghostwhite;
+  cursor: pointer;
+}
+.signIn {
+  padding: 1em;
+}
