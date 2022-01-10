@@ -25,7 +25,7 @@ const createChat = async (username, recipientUsername) => {
   try {
     const response = await backendAPI.post(`${username}/chats`, { recipientUsername });
     console.log(response);
-    return response;
+    return response.data.user;
   } catch (err) {
     const messageFormatter = {
       "chat already exists": "This chat already exists, please choose a different user.",
@@ -36,4 +36,13 @@ const createChat = async (username, recipientUsername) => {
   }
 };
 
-export { getChatsByUsername, getMessages, createChat };
+const createUser = async (user) => {
+  console.log(user);
+  try {
+    const response = await backendAPI.post("/users", { user });
+  } catch (err) {
+    return Promise.reject({});
+  }
+};
+
+export { getChatsByUsername, getMessages, createChat, createUser };
