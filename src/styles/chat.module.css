@@ -1,6 +1,10 @@
 .chat {
   border: 1px solid black;
   position: relative;
+  background-image: url("/public/mountain.jpg");
+  background-color: red;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .form {
@@ -24,6 +28,10 @@
   color: white;
   font-weight: bold;
   max-width: 80%;
+}
+.formSubmit:hover {
+  cursor: pointer;
+  border: 1px solid #2a9d8f;
 }
 
 .formInput {
