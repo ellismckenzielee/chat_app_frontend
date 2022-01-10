@@ -4,7 +4,14 @@ const backendAPI = axios.create({
 });
 const getChatsByUsername = async (username) => {
   const response = await backendAPI.get(`${username}/chats`);
-  return response.data.chats;
+  const chats = response.data.chats;
+  const formattedchats = chats.map((chat) => {
+    const users = chat.users;
+    const _id = chat._id;
+    const filteredUsers = users.filter((user) => user !== username);
+    return { _id, users: filteredUsers };
+  });
+  return formattedchats;
 };
 
 const getMessages = async (username, chatId) => {
