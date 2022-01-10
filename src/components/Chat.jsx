@@ -25,10 +25,12 @@ const Chat = ({ chatId }) => {
   if (chatId === "") return <p>Choose a chat</p>;
   return (
     <div className={styles.chat}>
-      <p>This is the chatpage</p>
-      {messages.map((message) => {
-        return <MessageCard key={message._id} message={message} />;
-      })}
+      <div className={styles.messageList}>
+        {messages.map((message) => {
+          return <MessageCard key={message._id} message={message} />;
+        })}
+      </div>
+
       <form
         className={styles.form}
         onSubmit={(e) => {

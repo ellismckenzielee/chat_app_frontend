@@ -7,6 +7,11 @@
   background-size: cover;
 }
 
+.messageList {
+  overflow: scroll;
+  height: 85vh;
+}
+
 .form {
   display: flex;
   justify-content: center;
