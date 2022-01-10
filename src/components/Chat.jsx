@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getMessages } from "../utils/utils";
 import styles from "../styles/chat.module.css";
 import MessageCard from "./MessageCard";
@@ -12,8 +12,15 @@ const Chat = ({ chatId }) => {
   const { user, setUser } = useContext(UserContext);
   console.log("USER", user);
   console.log(socket);
+  const ref = useRef(null);
+  console.log("REF", ref.current);
   const [newMessage, setNewMessage] = useState("");
   console.log(messages);
+  const AlwaysScrollToBottom = () => {
+    const elementRef = useRef();
+    useEffect(() => elementRef.current.scrollIntoView());
+    return <div ref={elementRef} />;
+  };
   useEffect(() => {
     if (chatId !== "") {
       getMessages("ellislee", chatId).then((messages) => {
@@ -25,9 +32,14 @@ const Chat = ({ chatId }) => {
   if (chatId === "") return <p>Choose a chat</p>;
   return (
     <div className={styles.chat}>
-      <div className={styles.messageList}>
-        {messages.map((message) => {
-          return <MessageCard key={message._id} message={message} />;
+      <div ref={ref} className={styles.messageList}>
+        {messages.map((message, indx) => {
+          return (
+            <div key={message._id + indx}>
+              <MessageCard message={message} />
+              <AlwaysScrollToBottom />
+            </div>
+          );
         })}
       </div>
 
