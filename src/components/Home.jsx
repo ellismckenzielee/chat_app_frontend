@@ -1,8 +1,11 @@
 import styles from "../styles/home.module.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { login } from "../utils/utils";
+import { UserContext } from "../contexts/user.context";
 const Home = () => {
   const [username, setUsername] = useState("");
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
   return (
     <div className={styles.home}>
@@ -13,7 +16,15 @@ const Home = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              console.log(username);
+              login(username)
+                .then((user) => {
+                  console.log(user);
+                  setUser(user);
+                  navigate("/messenger");
+                })
+                .catch((err) => {
+                  console.log("ERR", err);
+                });
             }}
             className={styles.loginForm}
           >
