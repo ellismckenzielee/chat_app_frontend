@@ -45,4 +45,14 @@ const createUser = async (user) => {
   }
 };
 
-export { getChatsByUsername, getMessages, createChat, createUser };
+const login = async (username) => {
+  try {
+    console.log("USERNAME", username);
+    const response = await backendAPI.get(`users/${username}`);
+    return response.data.user;
+  } catch (err) {
+    console.dir(err);
+    return Promise.reject({});
+  }
+};
+export { getChatsByUsername, getMessages, createChat, createUser, login };
