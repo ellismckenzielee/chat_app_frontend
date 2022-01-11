@@ -16,6 +16,7 @@ const Chat = ({ chatId }) => {
   console.log("REF", ref.current);
   const [newMessage, setNewMessage] = useState("");
   console.log(messages);
+  const [isLoading, setIsLoading] = useState(true);
   const AlwaysScrollToBottom = () => {
     const elementRef = useRef();
     useEffect(() => elementRef.current.scrollIntoView());
@@ -23,13 +24,16 @@ const Chat = ({ chatId }) => {
   };
   useEffect(() => {
     if (chatId !== "") {
+      setIsLoading(true);
       getMessages("ellislee", chatId).then((messages) => {
         setMessages(messages);
         joinRoom(chatId, setMessages);
+        setIsLoading(false);
       });
     }
   }, [chatId]);
   if (chatId === "") return <p>Choose a chat</p>;
+  if (isLoading) return <p>Content Loading...</p>;
   return (
     <div className={styles.chat}>
       <div ref={ref} className={styles.messageList}>
