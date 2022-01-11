@@ -4,6 +4,7 @@
 .chatHeader {
   color: #175676;
   font-weight: 900;
+  font-size: 35px;
 }
 
 .newChatButton {
@@ -18,4 +19,28 @@
 .newChatButton:hover {
   border: 1px solid white;
   cursor: pointer;
+}
+
+.logoutContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 1em;
+  align-items: center;
+  border-bottom: 1px solid black;
+  gap: 20px;
+}
+
+.logoutButton {
+  background-color: #ba324f;
+  padding: 0.5em;
+  color: ghostwhite;
+  border-radius: 5px;
+  border: 1px solid #ba324f;
+}
+
+.subHeader {
+  padding: 0em;
+  margin: 0;
 }
