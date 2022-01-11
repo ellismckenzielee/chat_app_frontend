@@ -1,19 +1,25 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getChatsByUsername } from "../utils/utils";
 import styles from "../styles/chatList.module.css";
 import ChatCard from "./ChatCard";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../contexts/user.context";
 const ChatList = ({ setChatID, chatId }) => {
+  const { user } = useContext(UserContext);
   const [chats, setChats] = useState([]);
-  console.log(chats);
   const navigate = useNavigate();
   useEffect(() => {
-    getChatsByUsername("ellislee").then((chats) => {
+    getChatsByUsername(user.username).then((chats) => {
       setChats(chats);
     });
   }, []);
   return (
     <div className={styles.chatList}>
+      <div className={styles.logoutContainer}>
+        <p className={styles.subHeader}> You are logged in as {user.username}</p>
+        <button className={styles.logoutButton}>Logout</button>
+      </div>
+
       <p className={styles.chatHeader}>LINK</p>
       {chats.map((chat) => {
         return <ChatCard key={chat._id} chat={chat} chatId={chatId} setChatId={setChatID} />;
