@@ -1,11 +1,23 @@
 .home {
-  color: red;
+  color: black;
 }
-
+.container {
+  width: 50%;
+  min-width: 350px;
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .welcome {
-  color: blue;
+  color: black;
 }
-
+.title {
+  color: #175676;
+  font-weight: 900;
+  font-size: 50px;
+}
 .loginForm {
   display: flex;
   flex-direction: column;
@@ -14,16 +26,35 @@
   display: flex;
   flex-direction: column;
   border: none;
+  text-align: center;
+}
+
+.legend {
+  margin: auto;
+  text-align: center;
+}
+
+.legendTitle {
+  font-weight: 700;
+  text-transform: uppercase;
 }
 .input {
   width: 100%;
-  padding: 0.5em;
+  padding: 1em;
   margin: 0.2em;
 }
 
-.submit {
+.submit,
+.create {
   width: 80%;
   margin: auto;
   padding: 0.5em;
   max-width: 360px;
+  border-radius: 5px;
+}
+
+.submit {
+  background-color: #175676;
+  color: white;
+  border: 1px solid #175676;
 }
