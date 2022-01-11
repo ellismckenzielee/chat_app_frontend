@@ -5,7 +5,7 @@ const UserProvider = ({ children }) => {
   const isLoggedIn = (user) => {
     return user.username !== undefined;
   };
-  const logout = (setUser) => {
+  const logout = () => {
     setUser({});
     return "Logged out.";
   };

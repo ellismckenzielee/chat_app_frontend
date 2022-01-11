@@ -40,6 +40,11 @@
   border: 1px solid #ba324f;
 }
 
+.logoutButton {
+  border: 1px solid ghostwhite;
+  cursor: pointer;
+}
+
 .subHeader {
   padding: 0em;
   margin: 0;

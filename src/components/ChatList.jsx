@@ -5,7 +5,7 @@ import ChatCard from "./ChatCard";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
 const ChatList = ({ setChatID, chatId }) => {
-  const { user } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
   const [chats, setChats] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -17,7 +17,16 @@ const ChatList = ({ setChatID, chatId }) => {
     <div className={styles.chatList}>
       <div className={styles.logoutContainer}>
         <p className={styles.subHeader}> You are logged in as {user.username}</p>
-        <button className={styles.logoutButton}>Logout</button>
+        <button
+          onClick={() => {
+            console.log("Pressed");
+            logout();
+            navigate("/home");
+          }}
+          className={styles.logoutButton}
+        >
+          Logout
+        </button>
       </div>
 
       <p className={styles.chatHeader}>LINK</p>
