@@ -1,6 +1,9 @@
 import react, { useState } from "react";
 import { io } from "socket.io-client";
-export const socket = io("http://localhost:4500", { transports: ["websocket"] });
+console.log("SOCKETCONTEXT", process.env.DBURL);
+const url = process.env.DBURL || "https://gentle-meadow-96818.herokuapp.com/";
+console.log(url);
+export const socket = io(url, { transports: ["websocket"] });
 socket.on("joined", (chat) => {
   console.log("joined", chat);
 });
