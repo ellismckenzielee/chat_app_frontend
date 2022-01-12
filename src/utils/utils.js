@@ -1,6 +1,7 @@
 import axios from "axios";
 const backendAPI = axios.create({
-  baseURL: "http://localhost:4500",
+  baseURL: "https://gentle-meadow-96818.herokuapp.com/",
+  //baseURL: "http://localhost:4500",
 });
 const getChatsByUsername = async (username) => {
   const response = await backendAPI.get(`${username}/chats`);

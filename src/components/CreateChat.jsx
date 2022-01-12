@@ -20,7 +20,7 @@ const CreateChat = () => {
             e.preventDefault();
             createChat(user.username, recipientUsername)
               .then((chat) => {
-                emitChat(chat);
+                emitChat(user.username, chat);
                 navigate(-1);
               })
               .catch(setErrorMessage);

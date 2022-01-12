@@ -1,8 +1,7 @@
 import react, { useState } from "react";
 import { io } from "socket.io-client";
 console.log("SOCKETCONTEXT", process.env.DBURL);
-const url = process.env.DBURL || "https://gentle-meadow-96818.herokuapp.com/";
-console.log(url);
+const url = "https://gentle-meadow-96818.herokuapp.com/";
 export const socket = io(url, { transports: ["websocket"] });
 socket.on("joined", (chat) => {
   console.log("joined", chat);
@@ -31,19 +30,26 @@ const SocketProvider = (props) => {
     });
   };
 
-  const listenChat = (setChats, chat) => {
+  const listenChat = (setChats, chat, username) => {
+    const filteredChat = {};
+    filteredChat._id = chat._id;
+    filteredChat.users = [];
+    chat.users.forEach((user) => {
+      console.log(user);
+      if (user !== username) filteredChat.users.push(user);
+    });
     setChats((prevChats) => {
       const updatedChats = [];
       prevChats.forEach((chat) => {
-        updatedChats.push({ ...prevChats });
+        updatedChats.push({ ...chat });
       });
-      return [...updatedChats, chat];
+      return [...updatedChats, filteredChat];
     });
   };
 
-  const emitChat = (chat) => {
+  const emitChat = (username, chat) => {
     console.log("emitting chat");
-    socket.emit("chat", chat);
+    socket.emit("chat", { username, chat });
   };
   const register = (username) => {
     socket.emit("register", username);

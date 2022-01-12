@@ -11,14 +11,14 @@ const ChatList = ({ setChatID, chatId }) => {
   const { leave } = useContext(SocketContext);
   const navigate = useNavigate();
   const { socket, listenChat } = useContext(SocketContext);
-
+  console.log("CHATS", chats);
   useEffect(() => {
     getChatsByUsername(user.username).then((chats) => {
       setChats(chats);
     });
     socket.emit("register", user.username);
     socket.on("chat", (chat) => {
-      listenChat(setChats, chat);
+      listenChat(setChats, chat, user.username);
     });
   }, []);
   return (
