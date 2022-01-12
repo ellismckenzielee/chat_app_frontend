@@ -17,6 +17,7 @@
   color: #175676;
   font-weight: 900;
   font-size: 50px;
+  margin: 0 auto;
 }
 .loginForm {
   display: flex;
@@ -36,7 +37,6 @@
 
 .legendTitle {
   font-weight: 700;
-  text-transform: uppercase;
 }
 .input {
   width: 100%;
@@ -57,4 +57,5 @@
   background-color: #175676;
   color: white;
   border: 1px solid #175676;
+  margin-top: 25px;
 }
