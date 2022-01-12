@@ -43,6 +43,17 @@ const Home = () => {
                 className={styles.input}
                 type="text"
               ></input>
+              <label>
+                <h3> Password</h3>
+              </label>
+              <input
+                value={username}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
+                className={styles.input}
+                type="password"
+              ></input>
             </fieldset>
             <button className={styles.submit}>Login</button>
             <p> Dont' have an account?</p>
