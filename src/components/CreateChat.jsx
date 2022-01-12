@@ -3,11 +3,13 @@ import { useState, useContext } from "react";
 import { createChat } from "../utils/utils";
 import { UserContext } from "../contexts/user.context";
 import { useNavigate } from "react-router-dom";
+import { SocketContext } from "../contexts/socket.context";
 const CreateChat = () => {
   const [recipientUsername, setRecipientUsername] = useState("");
   const { user } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+  const { emitChat } = useContext(SocketContext);
   return (
     <div className={styles.createChat}>
       <h2 className={styles.title}>Create a New Chat</h2>
@@ -17,7 +19,8 @@ const CreateChat = () => {
           onSubmit={(e) => {
             e.preventDefault();
             createChat(user.username, recipientUsername)
-              .then(() => {
+              .then((chat) => {
+                emitChat(chat);
                 navigate(-1);
               })
               .catch(setErrorMessage);
