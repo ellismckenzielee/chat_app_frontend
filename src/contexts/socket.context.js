@@ -4,7 +4,6 @@ export const socket = io("http://localhost:4500", { transports: ["websocket"] })
 socket.on("joined", (chat) => {
   console.log("joined", chat);
 });
-
 const SocketContext = react.createContext();
 const SocketProvider = (props) => {
   const sendMessage = async (message) => {
@@ -28,7 +27,33 @@ const SocketProvider = (props) => {
       });
     });
   };
-  return <SocketContext.Provider value={{ joinRoom, socket, sendMessage, moveRoom }}>{props.children}</SocketContext.Provider>;
+
+  const listenChat = (setChats, chat) => {
+    setChats((prevChats) => {
+      const updatedChats = [];
+      prevChats.forEach((chat) => {
+        updatedChats.push({ ...prevChats });
+      });
+      return [...updatedChats, chat];
+    });
+  };
+
+  const emitChat = (chat) => {
+    console.log("emitting chat");
+    socket.emit("chat", chat);
+  };
+  const register = (username) => {
+    socket.emit("register", username);
+  };
+  const leave = () => {
+    console.log("leaving");
+    socket.emit("leave");
+  };
+  return (
+    <SocketContext.Provider value={{ listenChat, emitChat, joinRoom, socket, sendMessage, moveRoom, leave, register }}>
+      {props.children}
+    </SocketContext.Provider>
+  );
 };
 
 export { SocketContext, SocketProvider };
