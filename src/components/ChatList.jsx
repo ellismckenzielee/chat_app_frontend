@@ -4,13 +4,21 @@ import styles from "../styles/chatList.module.css";
 import ChatCard from "./ChatCard";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
+import { SocketContext } from "../contexts/socket.context";
 const ChatList = ({ setChatID, chatId }) => {
   const { user, logout } = useContext(UserContext);
   const [chats, setChats] = useState([]);
+  const { leave } = useContext(SocketContext);
   const navigate = useNavigate();
+  const { socket, listenChat } = useContext(SocketContext);
+
   useEffect(() => {
     getChatsByUsername(user.username).then((chats) => {
       setChats(chats);
+    });
+    socket.emit("register", user.username);
+    socket.on("chat", (chat) => {
+      listenChat(setChats, chat);
     });
   }, []);
   return (
@@ -21,6 +29,7 @@ const ChatList = ({ setChatID, chatId }) => {
           onClick={() => {
             console.log("Pressed");
             logout();
+            leave();
             navigate("/home");
           }}
           className={styles.logoutButton}
