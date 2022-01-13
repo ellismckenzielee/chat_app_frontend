@@ -2,11 +2,11 @@
 
 ## Available at
 
-### http://tobedecided.com
+### https://naughty-meninsky-63ca15.netlify.app
 
 A real-time messenger application frontend built using React, Socket.io and axios. This connects to the Link backend API found at:
 
-### http://backendtobedecided.com
+### https://gentle-meadow-96818.herokuapp.com/
 
 ### Installation Instructions
 
