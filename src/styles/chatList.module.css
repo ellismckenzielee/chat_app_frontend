@@ -1,5 +1,6 @@
 .chatList {
   border: 1px solid black;
+  overflow-y: scroll;
 }
 .chatHeader {
   color: #175676;
@@ -14,6 +15,7 @@
   color: ghostwhite;
   border: 1px solid #175676;
   border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 .newChatButton:hover {
