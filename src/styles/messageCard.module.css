@@ -4,6 +4,7 @@
   white-space: collapse;
   border-radius: 5px;
   padding: 0.2em;
+  font-size: 1.3em;
 }
 
 .userMessage,
@@ -26,4 +27,5 @@
   font-size: x-small;
   color: ghostwhite;
   padding: 0.2em;
+  font-size: 0.7em;
 }
