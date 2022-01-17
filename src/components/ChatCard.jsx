@@ -11,7 +11,10 @@ const ChatCard = ({ setChatId, chat, chatId }) => {
       }}
       className={chatId === chat._id ? styles.activeChatCard : styles.chatCard}
     >
-      <h4 className={styles.chatName}>{chat.users}</h4>
+      <div className={styles.chatInfoContainer}>
+        <img className={styles.chatImage} src="./user.png" />
+        <h4 className={styles.chatName}>{chat.users}</h4>
+      </div>
     </div>
   );
 };
