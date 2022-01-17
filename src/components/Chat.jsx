@@ -56,7 +56,7 @@ const Chat = ({ chatId }) => {
           });
         }}
       >
-        <textarea
+        <input
           type="text"
           value={newMessage}
           onChange={(e) => {
